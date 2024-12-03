@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --color-primary: #cbaee4dc;
+    --color-danger: #FF0060;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #2a2a2a;
+    --color-info-dark: #ffffff;
+    --color-dark: #ffffff;
+    --color-light: #313131;
+    --color-background: #212121;
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: Poppins, sans-serif;
+    background-color: #212121;
+    color: #ffffff;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+    font-size: 0.88rem;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #212121;
+    padding: 15px;
+    position: relative;
+    border-bottom: none;
+    box-shadow: 2px 2px 5px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-background {
+    background-color: #212121;
+    position: absolute;
+    top: 0;
+    left: -9999px;
+    right: -9999px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 70px;
+    position: relative; /* Ограничивает абсолютные элементы внутри */
+    z-index: 10; /* Обеспечивает, что кнопка авторизации всегда сверху */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: -10px;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.login-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 35px;
+    border-radius: 8px;
+    margin-bottom: -5px;
+    border: 2px solid #cbaee4dc;
+    color: #ffffff;
+    font-size: 20px;
+    background-color: #2a2a2a;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    background-color: #201f1f;
+}
+
+.login-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    outline: none;
+    border: none;
+    background-color: #2a2a2a;
+    border: 2px solid #383838;
+    color: aliceblue;
+    transition: background-color 0.3s;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    margin-bottom: -5px;
+}
+
+.theme-toggle-btn:hover {
+    background-color: #201f1f;
+}
+
+.theme-icon {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.theme-toggle-btn:focus {
+    outline: none;
+}
+
+.profile-avatar-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    outline: none;
+    border: none;
+    background-color: #2a2a2a;
+    border: 2px solid #383838;
+    transition: background-color 0.3s;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    margin-bottom: -5px;
+}
+
+.profile-avatar:hover {
+    background-color: #a32ff19c;
+}
+
+html{
+    font-size: 14px;
+}
+
+a{
+    color: var(--color-dark);
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+.profiletext{
+    font-weight: 500;
+    font-size: 0.87rem;
+}
+
+.container{
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto 20rem;
+}
+
+aside{
+    height: 100vh;
+}
+
+aside .toggle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+}
+
+aside .sidebar{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    border-radius: 15px;
+    height: 40vh;
+    position: relative;
+    top: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar:hover{
+    box-shadow: none;
+}
+
+aside .sidebar a.active {
+    background-color: #677483;
+    color: var(--color-primary); /* Цвет текста активной ссылки */
+    border-left: 4px solid var(--color-primary); /* Полоса слева для выделения */
+    font-weight: 600; /* Усиление текста */
+}
+
+aside .sidebar a{
+    display: flex;
+    align-items: center;
+    color: var(--color-info-dark);
+    height: 3.7rem;
+    gap: 1rem;
+    position: relative;
+    margin-left: 2rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a span{
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a:hover span{
+    margin-left: 0.6rem;
+}
+
+.profile-container {
+    display: flex;
+    width: 100%;
+    max-width: 900px; /* По ширине сайдбара */
+    margin: 1.5rem auto;
+    background: var(--color-white);
+    border-radius: var(--border-radius-2);
+    overflow: hidden;
+}
+
+.profile-sidebar {
+    width: 35%; /* Левая колонка */
+    background: #313131;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    border-right: 1px solid var(--color-dark-variant);
+}
+
+.avatar-section {
+    align-items: center;
+}
+
+
+.profile-avatar {
+    max-width: 100%;
+    width: 220px;
+    height: 220px;
+    border-radius: 15%;
+    border: 4px solid var(--color-primary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+    display: block;
+    margin: 0 auto;
+}
+
+.edit-photo-btn {
+    background: var(--color-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius-1);
+    padding: 0.5rem 0.1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    width: auto;
+    margin-top: 20px;
+}
+
+.file-label {
+    background: var(--color-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius-1);
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: center;
+    width: auto;
+}
+
+.avatar-upload-input {
+    display: none;
+}
+
+.profile-content {
+    width: 65%; /* Правая колонка */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.profile-content h2 {
+    font-size: 1.8rem;
+    color: var(--color-dark);
+}
+
+.user-email {
+    font-size: 1rem;
+    color: var(--color-dark-variant);
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--color-light);
+    border-radius: var(--border-radius-1);
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-primary);
+}
+
+.edit-btn:hover {
+    color: var(--color-dark);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .container{
+        width: 95%;
+        grid-template-columns: 7rem auto 23rem;
+    }
+
+    aside .logo h2{
+        display: none;
+    }
+
+    aside .sidebar h3{
+        display: none;
+    }
+
+    aside .sidebar a{
+        width: 5.6rem;
+    }
+
+    aside .sidebar a:last-child{
+        position: relative;
+        margin-top: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        width: 100%;
+        grid-template-columns: 1fr;
+        padding: 0 var(--padding-1);
+    }
+
+    aside{
+        position: fixed;
+        background-color: var(--color-white);
+        width: 15rem;
+        z-index: 3;
+        box-shadow: 1rem 3rem 4rem var(--color-light);
+        height: 100vh;
+        left: -100%;
+        display: none;
+        animation: showMenu 0.4s ease forwards;
+    }
+
+    @keyframes showMenu {
+        to{
+        left: 0;
+        }
+    }
+
+    aside .logo{
+        margin-left: 1rem;
+    }
+
+    aside .logo h2{
+        display: inline;
+    }
+
+    aside .sidebar h3{
+        display: inline;
+    }
+
+    aside .sidebar a{
+        width: 100%;
+        height: 3.4rem;
+    }
+
+    aside .sidebar a:last-child{
+        position: absolute;
+        bottom: 5rem;
+    }
+
+    aside .toggle .close{
+        display: inline-block;
+        cursor: pointer;
+    }
+}

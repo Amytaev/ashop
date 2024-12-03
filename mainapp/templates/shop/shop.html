@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/shop/shop.css' %}">
+    <title>Магазин - Ashop.kz</title>
+    <script src="shop.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo1">
+                    <a href="{% url 'aashop' %}">
+                        <img src="../../logo/Logo 1.svg" alt="Логотип сайта Ashop.kz" class="logo">
+                    </a>
+                </div>
+            </div>
+            <nav class="sidebar">
+                <a href="#" data-category="Корзина">
+                    <span class="material-icons-sharp">shopping_cart</span>
+                    <h3>Моя корзина</h3>
+                </a>
+                <a href="#" data-category="электроника">
+                    <span class="material-icons-sharp">devices</span>
+                    <h3>Электроника</h3>
+                </a>
+                <a href="#" data-category="одежда">
+                    <span class="material-icons-sharp">checkroom</span>
+                    <h3>Одежда</h3>
+                </a>
+                <a href="#" data-category="аксессуары">
+                    <span class="material-icons-sharp">watch</span>
+                    <h3>Аксессуары</h3>
+                </a>
+                <a href="#" data-category="косметика">
+                    <span class="material-icons-sharp">brush</span>
+                    <h3>Косметика</h3>
+                </a>
+                <a href="#" data-category="дом">
+                    <span class="material-icons-sharp">chair</span>
+                    <h3>Дом</h3>
+                </a>
+                <a href="#" data-category="мужское">
+                    <span class="material-icons-sharp">man</span>
+                    <h3>Мужское</h3>
+                </a>
+                <a href="#" data-category="женское">
+                    <span class="material-icons-sharp">woman</span>
+                    <h3>Женское</h3>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Section -->
+        <section class="main-content">
+            <main>
+                <h1>Добро пожаловать!</h1>
+                <div class="analyse">
+                    <div class="sales">
+                        <form id="search-form">
+                            <input type="text" id="search-input" placeholder="Поиск товаров..." required>
+                            <button type="submit">Искать</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+            <!-- Товары размещены под поиском -->
+            <section id="products-container">
+                <a href="https://example.com" class="product-link">
+                    <div class="product-box">
+                        <img src="image/gid.png" alt="Г">
+                        <p class="product-price">3 742,06 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">TheAct</span>
+                            <span class="product-name">⠀/⠀Гидрофильное масло для умывания 110 мл</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/obuv.png" alt="Кроссовки белые - муж">
+                        <p class="product-price">4 872,06 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">JOYCITY</span>
+                            <span class="product-name">⠀/⠀Кроссовки белые, размеры 35-45</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/air1.webp" alt="Наушники">
+                        <p class="product-price">4 359,06 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">Dsaila</span>
+                            <span class="product-name">⠀/⠀Беспроводные вакуумные наушники Ds Pro для телефона</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/bed1.webp" alt="Кровать - дом">
+                        <p class="product-price">40 230 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">Квадрат</span>
+                            <span class="product-name">⠀/⠀Кровать двуспальная металлическая 160х200 см</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/cosmetic1.webp" alt="Косметика">
+                        <p class="product-price">4 850 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">QUEENLASH</span>
+                            <span class="product-name">⠀/⠀Сыворотка для роста ресниц и бровей</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/newobuv1.webp" alt="Обувь">
+                        <p class="product-price">9 800 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">zaza Обувь</span>
+                            <span class="product-name">⠀/⠀Кроссовки женские</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/vesh1.webp" alt="Вешалка - дом">
+                        <p class="product-price">8 880 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">Vidovito</span>
+                            <span class="product-name">⠀/⠀Вешалка напольная для одежды в прихожую металлическая</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/usb1.webp" alt="Провод">
+                        <p class="product-price">1 980 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">STIMAXON</span>
+                            <span class="product-name">⠀/⠀Провод usb type c для зарядки телефона</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/Shapka1.webp" alt="Шапка - мужская">
+                        <p class="product-price">2 900 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">SYMTRI</span>
+                            <span class="product-name">⠀/⠀Шапка бини осенняя зимняя</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="/shop/sh/pstree.html" class="product-link">
+                    <div class="product-box">
+                        <img src="image/pstree1.webp" alt="Poison Tree - аксессуар">
+                        <p class="product-price">3 550 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">Poppy Luv Jewerly</span>
+                            <span class="product-name">⠀/⠀Подвеска XXXTentacion Poison Tree Of Life</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/sumka1.webp" alt="Женская Сумка">
+                        <p class="product-price">13 020 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">Le TRESOR</span>
+                            <span class="product-name">⠀/⠀Сумка кросс-боди на ремне</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/hud1.webp" alt="Худи Женское">
+                        <p class="product-price">10 640 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">Ticle</span>
+                            <span class="product-name">⠀/⠀Худи оверсайз с капюшоном и начесом</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/uborka1.webp" alt="Швабра - дом">
+                        <p class="product-price">19 910 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">ZETTER</span>
+                            <span class="product-name">⠀/⠀Швабра и ведро с отжимом M (10 л)</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/foot1.webp" alt="Футболка мужская">
+                        <p class="product-price">2 140 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">Smite</span>
+                            <span class="product-name">⠀/⠀Футболка однотонная базовая хлопок</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/sport1.webp" alt="Мужской спорт костюм">
+                        <p class="product-price">22 960 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">HUGREX</span>
+                            <span class="product-name">⠀/⠀Спортивный костюм теплый с начесом</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/bruki1.webp" alt="Женские спорт брюки">
+                        <p class="product-price">13 220 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">XONAS</span>
+                            <span class="product-name">⠀/⠀Штаны спортивные джоггеры с начесом y2k</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/1.webp" alt="Очки">
+                        <p class="product-price">6 200 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">Casio</span>
+                            <span class="product-name">⠀/⠀Часы наручные кварцевые</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/ochki1.webp" alt="Poison Tree">
+                        <p class="product-price">14 060 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">REDGARMAND ACCESSORIES</span>
+                            <span class="product-name">⠀/⠀Очки прозрачные аксессуар имиджевые нулевки</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/obuv1.webp" alt="Poison Tree">
+                        <p class="product-price">7 250 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">cori-shop</span>
+                            <span class="product-name">⠀/⠀Кроссовки унисекс летние</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="product-link">
+                    <div class="product-box">
+                        <img src="image/brasl1.webp" alt="Poison Tree">
+                        <p class="product-price">4 640 ₸</p>
+                        <div class="product-info">
+                            <span class="supplier">ALICE VOIZ design</span>
+                            <span class="product-name">⠀/⠀Браслет на руку FUCK OFF под серебро</span>
+                        </div>
+                    </div>
+                </a>
+            </section>
+        </section>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <nav class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b id="username">Пользователь</b></p> <!-- Никнейм -->
+                    </div>
+                    <div class="profile-photo">
+                        <img src="/path/to/default-avatar.png" alt="Аватар пользователя" id="profile-avatar"> <!-- Аватар -->
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <section class="information">
+        <div class="informations">
+            <h2>Контактная информация</h2>
+            <p>Адрес: ул. Каныша Сатпаева, 22, Алматы, Казахстан</p>
+            <p>Телефон: +7 (705) 626-82-65</p>
+            <p>Email: siamoonq@gmail.com</p>
+            <h2>О компании</h2>
+            <p>&copy; 2023-2024, ТОО «Ashop»</p>
+            <p>Ashop.kz — интернет-магазин, предлагающий качественные товары с 2023 года. <br> Наша цель — сделать шопинг удобным и доступным для каждого клиента.</p>
+        </div>
+        <div class="social-links">
+            <h2>Социальные сети</h2>
+            <a class="instc" href="https://www.instagram.com/amytaev/?hl=ru" target="_blank"><i class="ri-instagram-fill"></i></a>
+            <a class="tgc" href="https://t.me/amytaev" target="_blank"><i class="ri-telegram-fill"></i></a>
+            <a class="vkc" href="https://vk.com/amytaev" target="_blank"><i class="ri-vk-fill"></i></a>
+            <a class="ytc" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><i class="ri-youtube-fill"></i></a>
+        </div>
+    </section>
+</body>
+</html>

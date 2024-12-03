@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %}</title>
+    {% load static %}
+</head>
+<body>
+    <header>
+        <div class="header-background"></div> <!-- Фон логотипа -->
+        <div class="header-container">
+            <a href="{% url 'aashop' %}">
+                <img src="{% static 'image/logo/Logo 1.svg' %}" alt="Логотип сайта Ashop.kz" class="logo">
+            </a>
+            <div class="header-buttons">
+                <!-- Кнопка для смены темы -->
+                <button class="theme-toggle-btn">
+                    <img src="{% static 'image/logo/white.svg' %}" alt="Светлая тема" id="theme-icon" class="theme-icon">
+                </button>
+                {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="profile-link">
+                    <div class="avatar-container">
+                        <img src="{{ user.get_avatar_url }}" alt="User photo" class="profile-avatar">
+                    </div>
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}" class="login-btn">Вход | Регистрация</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        {% block sidebar %}
+        <aside>
+            <div class="sidebar">
+                <a href="{% url 'profile' %}" class="{% if active_page == 'profile' %}active{% endif %}">
+                    Profile
+                </a>
+                <a href="{% url 'logout' %}" class="{% if active_page == 'logout' %}active{% endif %}">
+                    Logout
+                </a>
+            </div>
+        </aside>
+        {% endblock %}
+
+        <main>
+            {% block content %}
+            <!-- Main content here -->
+            {% endblock %}
+        </main>
+    </div>
+</body>
+</html>

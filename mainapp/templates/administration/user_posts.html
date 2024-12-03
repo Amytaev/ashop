@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Посты пользователя {{ user.username }}</h1>
+<ul>
+    {% for post in posts %}
+    <li>
+        <strong>{{ post.title }}</strong>
+        <p>{{ post.content }}</p>
+        <small>{{ post.created_at|date:"d.m.Y H:i" }}</small>
+        <a href="{% url 'delete_post' post.id %}">Удалить</a>
+    </li>
+    {% empty %}
+    <p>У пользователя нет постов</p>
+    {% endfor %}
+</ul>
+<a href="{% url 'admin_panel' %}">Назад к списку пользователей</a>
+</body>
+</html>

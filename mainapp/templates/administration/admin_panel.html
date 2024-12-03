@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/administration/admin_panel.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <title>Посты Администратора</title>
+</head>
+<body>
+    <header>
+        <div class="header-background"></div>
+        <div class="header-container">
+            <a href="{% url 'aashop' %}">
+                <img src="{% static 'image/logo/Logo 2.svg' %}" alt="Логотип сайта Ashop.kz" class="logo">
+            </a>
+            <div class="header-buttons">
+                <button class="theme-toggle-btn">
+                    <img src="{% static 'image/logo/white.svg' %}" alt="Светлая тема" id="theme-icon" class="theme-icon">
+                </button>
+                {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="profile-link">
+                    <div class="avatar-container">
+                        <img src="{{ user.get_avatar_url }}" alt="User photo" class="profile-avatar">
+                    </div>
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}" class="login-btn">Вход | Регистрация</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <h2>Админская панель <a href="?sort={% if sort_order == 'asc' %}desc{% else %}asc{% endif %}" class="sort-button">
+            {% if sort_order == 'asc' %}
+            <i class="ri-arrow-up-line"></i> <!-- Иконка сортировки по возрастанию -->
+            {% else %}
+            <i class="ri-arrow-down-line"></i> <!-- Иконка сортировки по убыванию -->
+            {% endif %}
+        </a></h2>
+        <!-- Кнопка сортировки с иконкой -->
+        <ul class="chat-list">
+            {% for user in users %}
+            <a href="{% url 'user_posts' user.id %}" class="user-item">
+                <li>
+                    <span class="user-name">{{ user.username }}</span>
+                    <small class="last-post">
+                        {% if user.last_post_date %}
+                        Последний пост: {{ user.last_post_date|date:"d.m.Y H:i" }}
+                        {% else %}
+                        Постов нет
+                        {% endif %}
+                    </small>
+                </li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="main-chat">
+        <div class="main-chat-header"></div>
+        <div class="main-chat-content">
+        </div>
+    </div>
+</body>
+</html>

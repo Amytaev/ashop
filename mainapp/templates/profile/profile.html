@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile/profile_copy.css' %}">
+    <script src="{% static 'js/profile/profile.js' %}"></script>
+    <title>{% block title %}Профиль - Ashop.kz{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <div class="header-background"></div> <!-- Фон логотипа -->
+        <div class="header-container">
+            <a href="{% url 'aashop' %}">
+                <img src="{% static 'image/logo/Logo 2.svg' %}" alt="Логотип сайта Ashop.kz" class="logo">
+            </a>
+            <div class="header-buttons">
+                <!-- Ссылка для смены темы (только для админов) -->
+                {% if user.is_authenticated and user.is_staff %}
+                <a href="{% url 'admin_panel' %}" class="theme-toggle-btn">
+                    <img src="{% static 'image/logo/white.svg' %}" alt="Светлая тема" id="theme-icon" class="theme-icon">
+                </a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="profile-link">
+                    <div class="avatar-container">
+                        <img src="{{ user.get_avatar_url }}" alt="User photo" class="profile-avatar-1">
+                    </div>
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}" class="login-btn">Вход | Регистрация</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+        <div class="container">
+            {% block sidebar %}
+            <aside>
+                <div class="sidebar">
+                    <a href="{% url 'profile' %}" class="{% if active_page == 'profile' %}active{% endif %}">
+                        <span class="material-icons-sharp">person_outline</span>
+                        <h3 class="profiletext">Profile</h3>
+                    </a>
+                    <a href="{% url 'aboutuser' %}" class="{% if active_page == 'aboutuser' %}active{% endif %}">
+                        <span class="material-icons-sharp">person_outline</span>
+                        <h3 class="profiletext">infromation</h3>
+                    </a>
+                    <a href="{% url 'logout' %}" class="{% if active_page == 'logout' %}active{% endif %}">
+                        <span class="material-icons-sharp">logout</span>
+                        <h3 class="profiletext">Logout</h3>
+                    </a>
+                </div>
+            </aside>
+            {% endblock %}
+
+            <main>
+                <div class="profile-container">
+                    <!-- Левая колонка с фото -->
+                    <div class="profile-sidebar">
+                        <div class="avatar-section">
+                            <!-- Отображение текущего аватара -->
+                            {% if user.avatar %}
+                                <img src="{{ user.avatar.url }}" alt="User Avatar" class="profile-avatar">
+                            {% else %}
+                                <img src="{% static 'default-avatar.jpg' %}" alt="Default Avatar" class="profile-avatar">
+                            {% endif %}
+                            <!-- Форма для загрузки нового аватара -->
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <!-- Скрытый input для загрузки файла -->
+                                <input type="file" name="avatar" accept="image/*" id="file-input" class="avatar-upload-input" onchange="this.form.submit();">
+                                <!-- Кнопка, которая визуально будет как кнопка изменения фото -->
+                                <button type="submit" class="edit-photo-btn">Изменить фото</button>
+                                <!-- Псевдокнопка, которая будет видна как обычная кнопка выбора файла -->
+                                <label for="file-input" class="file-label">Выбрать файл</label>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Правая колонка с информацией -->
+                    <div class="profile-content">
+                        <div class="profile-details">
+                            <div class="detail-row">
+                                <span>Никнейм:</span>
+                                <p>{{ user.username }}</p>
+                                <button class="edit-btn">
+                                    <span class="material-icons-sharp">edit</span>
+                                </button>
+                            </div>
+                            <div class="detail-row">
+                                <span>Email:</span>
+                                <p>{{ user.email }}</p>
+                                <button class="edit-btn">
+                                    <span class="material-icons-sharp">edit</span>
+                                </button>
+                            </div>
+                            <div class="detail-row">
+                                <span>Number:</span>
+                                <p>{{ user.phone }}</p>
+                                <button class="edit-btn">
+                                    <span class="material-icons-sharp">edit</span>
+                                </button>
+                            </div>
+                            <div class="detail-row">
+                                <span>Role:</span>
+                                <p>{{ user.role }}</p>
+                                <button class="edit-btn">
+                                    <span class="material-icons-sharp">edit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+</body>
+</html>

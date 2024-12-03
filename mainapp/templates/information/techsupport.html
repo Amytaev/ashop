@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат с Техподдержкой · Ashop.kz</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/information/techsupport.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-background"></div> <!-- Фон логотипа -->
+        <div class="header-container">
+            <a href="{% url 'aashop' %}">
+                <img src="{% static 'image/logo/Logo 2.svg' %}" alt="Логотип сайта Ashop.kz" class="logo">
+            </a>
+            <div class="header-buttons">
+                <!-- Ссылка для смены темы (только для админов) -->
+                {% if user.is_authenticated and user.is_staff %}
+                <a href="{% url 'admin_panel' %}" class="theme-toggle-btn">
+                    <img src="{% static 'image/logo/white.svg' %}" alt="Светлая тема" id="theme-icon" class="theme-icon">
+                </a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="profile-link">
+                    <div class="avatar-container">
+                        <img src="{{ user.get_avatar_url }}" alt="User photo" class="profile-avatar">
+                    </div>
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}" class="login-btn">Вход | Регистрация</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <h2>Пользователи 
+            <!-- Кнопка сортировки с иконкой -->
+            <a href="?sort={% if sort_order == 'asc' %}desc{% else %}asc{% endif %}" class="sort-button">
+                {% if sort_order == 'asc' %}
+                <i class="ri-arrow-up-line"></i> <!-- Иконка сортировки по возрастанию -->
+                {% else %}
+                <i class="ri-arrow-down-line"></i> <!-- Иконка сортировки по убыванию -->
+                {% endif %}
+            </a>
+        </h2>
+        <!-- Список пользователей -->
+        <ul class="chat-list">
+            {% for post in user_posts %}
+            <a href="#" class="user-item">
+                <li>
+                    <span class="user-name">{{ post.title }}</span>
+                    <small class="last-post">
+                        {% if post.created_at %}
+                        Последний пост: {{ post.created_at|date:"d.m.Y H:i" }}
+                        {% else %}
+                        Постов нет
+                        {% endif %}
+                    </small>
+                </li>
+            </a>
+            {% empty %}
+            <p class="no-posts-message">У вас еще нет постов</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="main-chat">
+        <div class="main-chat-header"><h2 class="main-chat2">Создайте свое обращение!</h2></div>
+        <div class="main-chat-content">
+                <form method="POST" class="post-form">
+                    {% csrf_token %}
+                    <input type="text" name="title" placeholder="Введите название..." class="form-input" required>
+                    <textarea name="content" placeholder="Введите описание..." class="form-textarea" required></textarea>
+                    <button type="submit" class="form-submit-btn">Отправить</button>
+                </form>
+        </div>
+    </div>
+</body>
+</html>

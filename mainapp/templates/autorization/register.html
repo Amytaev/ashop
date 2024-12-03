@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация · Ashop.kz</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/autorization/register.css' %}">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-container__content">
+            <div class="auth-container__body">
+                <div class="tabs _border">
+                    <div class="tabs-menu">
+                        <a class="tabs-item {% if active_page == 'login' %}is-active{% endif %}" href="{% url 'login' %}">
+                            <span class="tabs-item__inner">Вход</span>
+                        </a>
+                        <a class="tabs-item {% if active_page == 'register' %}is-active{% endif %}" href="{% url 'register' %}">
+                            <span class="tabs-item__inner">Регистрация</span>
+                        </a>
+                        <a class="tabs-item {% if active_page == 'reset-password' %}is-active{% endif %}" href="{% url 'reset_password' %}">
+                            <span class="tabs-item__inner">Сброс пароля</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="auth-form">
+                    <form id="registrationForm" action="{% url 'register' %}" method="post">
+                        {% csrf_token %}
+                        <div class="auth-form auth-form_unset-top">
+                            <div class="auth-label text-center">Создать аккаунт</div>
+                            <div class="form-input form-input_size-lg">
+                                <input class="form-input__field" type="text" name="username" placeholder="Никнейм" value="{{ form.username.value|default_if_none:'' }}" required>
+                                <p class="error-message">
+                                    {% for error in form.username.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="form-input form-input_size-lg">
+                                <input class="form-input__field" type="email" name="email" placeholder="Email" value="{{ form.email.value|default_if_none:'' }}" required>
+                                <p class="error-message">
+                                    {% for error in form.email.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="form-input form-input_size-lg">
+                                <input class="form-input__field" type="tel" name="phone" placeholder="Номер телефона" value="{{ form.phone.value|default_if_none:'' }}" required pattern="^\+[0-9]{10,15}$" maxlength="15">
+                                <p class="error-message">
+                                    {% for error in form.phone.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="form-input form-input_size-lg">
+                                <input class="form-input__field" type="password" name="password" placeholder="Пароль" required>
+                                <p class="error-message">
+                                    {% for error in form.password.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <div class="form-input form-input_size-lg">
+                                <input class="form-input__field" type="password" name="confirm_password" placeholder="Повторите пароль" required>
+                                <p class="error-message">
+                                    {% for error in form.confirm_password.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <button class="btn btn_variant-primary btn_filled btn_block btn_size-lg" type="submit"><strong>Зарегистрироваться</strong></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
